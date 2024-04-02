@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,7 +23,10 @@ public class HomeController {
         System.out.println("getting users");
         return this.userDetailService.getUsers();
     }
-
+    @GetMapping("/current-user")
+public String getLoggedInUser(Principal principal){  //principal interface will give current subject //which will login through credentials
+ return principal.getName();
+}
     }
 
 
